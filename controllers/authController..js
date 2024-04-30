@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 const bcrypt = require("bcryptjs");
-const jwt=require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 const registerController = async (req, res) => {
   try {
@@ -81,4 +81,23 @@ const loginController = async (req, res) => {
   }
 };
 
-module.exports = { registerController,loginController };
+//GET CURRENT USER
+const currentUserController = async (req, res) => {
+  try {
+    const user = await userModel.findOne({ _id: req.body.userId });
+    return res.status(200).send({
+      success: true,
+      message: "User Fetched Successfully",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "unable to get current user",
+      error,
+    });
+  }
+};
+
+module.exports = { registerController, loginController, currentUserController };
