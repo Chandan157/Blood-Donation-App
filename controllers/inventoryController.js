@@ -89,7 +89,7 @@ const createInventoryController = async (req, res) => {
   }
 };
 
-// GET ALL BLOOD RECORS
+// GET ALL BLOOD RECORDS
 const getInventoryController = async (req, res) => {
   try {
     const inventory = await inventoryModel
@@ -114,4 +114,4 @@ const getInventoryController = async (req, res) => {
   }
 };
 
-module.exports = { createInventoryController,getInventoryController };
+module.exports = { createInventoryController, getInventoryController };
