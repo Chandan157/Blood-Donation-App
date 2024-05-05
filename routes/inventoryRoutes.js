@@ -5,7 +5,9 @@ const {
   getInventoryController,
   getDonarsController,
   getHospitalController,
-  getOrgnaisationController,
+  getorganisationController,
+  getorganisationForHospitalController,
+  getInventoryHospitalController,
 } = require("../controllers/inventoryController");
 
 const router = express.Router();
@@ -17,6 +19,13 @@ router.post("/create-inventory", authMiddleware, createInventoryController);
 //Get All Blood Records
 router.get("/get-inventory", authMiddleware, getInventoryController);
 
+//Get Hospital Blood Records
+router.get(
+  "/get-inventory-hospital",
+  authMiddleware,
+  getInventoryHospitalController
+);
+
 //Get Donar Records
 router.get("/get-donars", authMiddleware, getDonarsController);
 
@@ -24,6 +33,13 @@ router.get("/get-donars", authMiddleware, getDonarsController);
 router.get("/get-hospitals", authMiddleware, getHospitalController);
 
 //Get Organisation Records
-router.get("/get-organisation", authMiddleware, getOrgnaisationController);
+router.get("/get-organisation", authMiddleware, getorganisationController);
+
+//Get Organisation Records
+router.get(
+  "/get-organisation-for-hospital",
+  authMiddleware,
+  getorganisationForHospitalController
+);
 
 module.exports = router;

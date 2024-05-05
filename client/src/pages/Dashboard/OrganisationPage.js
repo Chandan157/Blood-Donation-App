@@ -8,26 +8,27 @@ const OrganisationPage = () => {
   // get current user
   const { user } = useSelector((state) => state.auth);
   const [data, setData] = useState([]);
+
   //find org records
   const getOrg = async () => {
     try {
       if (user?.role === "donar") {
-        const { data } = await API.get("/inventory/get-orgnaisation");
-        //   console.log(data);
-        if (data?.success) {
+        const { data } = await API.get("/inventory/get-organisation");
+        console.log(data);
+        if (data?.success) 
           setData(data?.organisations);
         }
-      }
+    
       if (user?.role === "hospital") {
         const { data } = await API.get(
-          "/inventory/get-orgnaisation-for-hospital"
+          "/inventory/get-organisation-for-hospital"
         );
-        //   console.log(data);
         if (data?.success) {
           setData(data?.organisations);
         }
       }
-    } catch (error) {
+  }
+    catch (error) {
       console.log(error);
     }
   };

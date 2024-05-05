@@ -5,11 +5,13 @@ import moment from "moment";
 
 const Donar = () => {
   const [data, setData] = useState([]);
+  
   //find donar records
   const getDonars = async () => {
     try {
+      console.log("Hello");
       const { data } = await API.get("/inventory/get-donars");
-      //   console.log(data);
+        console.log(data);
       if (data?.success) {
         setData(data?.donars);
       }
